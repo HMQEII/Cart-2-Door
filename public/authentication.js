@@ -49,9 +49,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then((data) => {
                     if (data.success) {
                         openPopup(data.message); // Registration successful
+                        //sending a mail to the user
+                        Email.send({
+                            Host : "smtp.elasticemail.com",
+                            Username : "q4me.eic@gmail.com",
+                            Password : "FB017ABBE9E59E85FF5774A6B52D41DF8393",
+                            To : email,
+                            From : "q4me.eic@gmail.com",
+                            Subject : "Registration Successfull",
+                            Body : "UserID: "+username+" <br> Congratulations on successful registration. This is you UserID"
+                        }).then(
+                          message => console.log(message)
+                        );
+
                         // window.location.reload();
                         document.getElementById('email').value=email;
                         document.getElementById('password').value=password;
+
+                        
                         //shifting page to Login
                         const loginLink = document.querySelector('.login-link');
                         loginLink.click();

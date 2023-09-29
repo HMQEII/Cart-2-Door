@@ -1,3 +1,9 @@
 connection string
-
 mongodb+srv://aaronrocksa24:Aaroncoutinho24@c2d.23ujxhc.mongodb.net/C2D_DB?retryWrites=true&w=majority
+
+how to push to github
+git add .
+git commit -m 'Your message'
+git push -u master           //executed only once
+git push                     //for further push
+git log --all                //for knowing who commited what and when
