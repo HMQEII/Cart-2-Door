@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SHLocal_WelcomePage</title>
+        <link rel="stylesheet" href="popup.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="images/SHLocal_logo.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
+    </head>
+    <body>
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+        <div class="loading-screen">
+            <div class="loading-content">
+                <img src="images/loader.gif" width="75%" >
+                <p style="font-size: 30px;">Loading...</p>
+            </div>
+        </div>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <!-- <span class="close-popup" onclick="closePopup()">&times;</span> -->
+                <p id="popup-message"></p>
+                <button class="okay-button" onclick="closePopup()">Okay</button>
+            </div>
+        </div>
+        <header>
+            <div class="logo">
+                <a href="WelcomePage.html">
+                  <img src="images/SHLocal_logo.png" width= '77px' height='67px 'alt="SHLocal">
+                </a>
+            </div>
+            <nav class="navigation">
+                <div class="search-cont">
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                  <input type="search" id="search-box"  class="search-box">
+                </div>
+                <a href="#about">About</a>
+                <a href="#services" class="s_one">Services</a>
+                <button class="btnLogin-popup">Sign In</button>
+            </nav>
+        </header>
+        
+        <br><br><br>
+        <div class="banner"><br>
+            <p>Left to work here</p>
+        </div>
+        <div class="boxe">
+        <div class="wrapper">
+            <span class="icon-close">
+                <ion-icon name="close-outline"></ion-icon>
+            </span>
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form action="" id="login-form">
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="email" id="email" name="email">  
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input id="password" name="password" type="password" required>  
+                         <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <a href="#">Forgot Password</a>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                    <div class="login-register">
+                        <p>Don't have an account?
+                            <a href="#" class="register-link">Register</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form action="" id="registration-form">
+                    <div class="input-box" >
+                        <span class="icon"></span>
+                        <input type="text" id="rusername">  
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="email" id="remail">  
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input id="rpassword" type="password" required>  
+                         <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label>
+                            <input type="checkbox" required> I agree to the terms and conditions
+                        </label>
+                    </div>
+                    <button type="submit"  class="btn">Submit</button>
+                    <div class="login-register">
+                        <p>Already have an account?
+                            <a href="#" class="login-link">Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64c22bf8cc26a871b02b872a/1h6b7nhcu';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<br><br><br>
+       
+       <div id="services" class="section">
+          <h2>Our Services</h2><br>
+          <ul class="try">
+            <center>
+            <div class="card">
+                <img src="images/delivery_1-800x600.gif" class="card_img" alt="..." >
+                <div class="card-body">
+                  <p class="card-text" ><center>Fast Delievery</center></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/location.gif" class="card_img" alt="..." >
+                <div class="card-body">
+                  <p class="card-text" ><center>Nearby Local Stores</center></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/shopkeeper.gif" class="card_img" alt="..." >
+                <div class="card-body">
+                  <p class="card-text" ><center>Verified Shops</center></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Teal Barcode Reminder Instagram Post.gif" class="card_img" alt="..." >
+                <div class="card-body">
+                  <p class="card-text" ><center>Barcode Verification</center></p>
+                </div>
+            </div>
+            </center>
+          </ul>
+       </div>
+       <div id="about" class="section">
+        <h2>About Us</h2>
+        <br>
+        <p>SHLocal is a convenient and user-friendly app that allows you to book a personal shopper to get things for you from local shops near your location. Whether you're too busy, unable to go out, or just prefer the convenience of having someone else do the shopping, FetchIt connects you with reliable and trustworthy shoppers who can handle your errands efficiently.
+      </p>
+     </div>
+       <footer class="footer">
+        <div class="navigation-foot">
+            
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul class="ul1">
+                        <li><a href='#'>FAQ</a></li>
+                        <li><a href='#'>Shipping</a></li>
+                        <li><a href='#'>Returns</a></li>
+                        <li><a href='#'>Payment Options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="ul1">
+                        
+                        <li><a href='#'>Privacy Policy</a></li>
+                        <li><a href='#'>Affilliate Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="ul1">
+                        <li><a href="mailto:cart2door@gmail.com">support@c2d.com</a></li>
+                        <li><p>9169420569</p></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-media-links">
+                        <a href='#'><i class='fab fa-facebook-f'></i></a>
+                        <a href='#'><i class='fab fa-instagram'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </footer>
+       
+
+        <!-- </script>
+        <script type="module">
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+        const firestore = getFirestore(app); // 'app' is the Firebase app you initialized earlier
+        </script> -->
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+
+        <script src="script.js"></script>
+        <script  src="authentication.js"></script>
+
+    </body>
+</html>
