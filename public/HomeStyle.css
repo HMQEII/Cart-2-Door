@@ -100,10 +100,24 @@ header {
     text-decoration: none;
     margin-left: 40px;
 }
+
+.dropdown-menu{
+    margin-top: 5px !important;
+    backdrop-filter: blur(20px);
+    background-color: transparent !important;
+}
 .dropdown-menu a:hover {
     background-color: transparent !important;
     color: darkcyan;
 }
+.dropdown-item{
+    display: flex !important;
+    margin-left: 0 !important;
+    align-items: center !important;
+    text-align: center;
+
+}
+
 .navigation-foot{
     max-width: 1170px;
     margin:auto;
@@ -123,6 +137,12 @@ header {
 .navigation .dropdown-menu a::after {
     content: none; 
     background: none;
+}
+.btn.btn-secondary.dropdown-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .btn.btn-secondary.dropdown-toggle::after {
     content: none; 
@@ -187,7 +207,9 @@ header {
     transform: translateX(0);
 }
 
-
+label{
+    margin-bottom: 0;
+}
 .wrapper.active .form-box.login {
     transition: none;
     transform: translateX(-400px);

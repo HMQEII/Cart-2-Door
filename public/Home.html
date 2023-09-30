@@ -19,7 +19,18 @@
                 <p style="font-size: 30px;">Loading...</p>
             </div>
         </div> -->
-        
+        <style>
+            .ionicons{
+                font-size: 28px;
+                margin-bottom: 0 !important;
+            }
+            .subionicons{
+                margin-right: 10px;
+            }
+            .usericon{
+                padding-right: 10px !important;
+            }
+        </style>
         <header>
             <div class="logo">
                 <a href="/Home.html">
@@ -31,17 +42,17 @@
                     <span class="search-icon"><i class="fas fa-search"></i></span>
                   <input type="search" id="search-box"  class="search-box">
                 </div>
-                <a href="#about">About</a>
-                <a href="#services" class="s_one">Services</a>
+                <a href="">Shopkeeper/Deliverer</a>
+                <a href="" class="s_one">Shops</a>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <ion-icon name="person-circle-outline"></ion-icon>
-                        <label id="userid" style="align-items: center; text-align: center;">#</label>
+                        <ion-icon name="person-circle-outline" class="usericon"></ion-icon>
+                        <label id="userid">#</label>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="/WelcomePage.html">Log Out</a></li>
+                      <li><a class="dropdown-item" href="#"><ion-icon class="subionicons" name="person"></ion-icon>Profile</a></li>
+                      <li><a class="dropdown-item" href="#"><ion-icon class="subionicons" name="cart"></ion-icon>Cart</a></li>
+                      <li><a class="dropdown-item" href="/WelcomePage.html"><ion-icon class="subionicons" name="power"></ion-icon>Log Out</a></li>
                     </ul>
                   </div>
             </nav>
@@ -74,7 +85,7 @@
           <h2>Recommendations for You</h2><br>
           <div class="try">
             
-            <div class="card" onclick="showIframe('c1' , 'Dmart')">
+            <div class="card" id="dmart" onclick="addToSelectedListAndShowIframe('c1', 'Dmart')">
                 <img src="https://drive.google.com/uc?id=1fpr4Mg3rdUi60bJkvq3HKwT_IqAR107y" class="card_img" alt="..." >
                 <div class="card-body">
                   <p class="card-text"  ><center>Dmart</center></p>
@@ -98,7 +109,7 @@
                   <p class="card-text" ><center>Govind Store</center></p>
                 </div>
             </div>
-            <div class="card" onclick="showIframe('c5','Mamta Novelty')">
+            <div class="card" onclick="addToSelectedListAndShowIframe('c5', 'Mamta Novelty')">
                 <img src="https://drive.google.com/uc?id=1cjLAulnwqArbJMQ_YitHodamqUoiPrd1" class="card_img" alt="..." >
                 <div class="card-body">
                   <p class="card-text" ><center>Mamta Novelty</center></p>

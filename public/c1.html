@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="C_Stlyes.css">
     <title>Document</title>
+    <script>
+        function selectItem(itemName) {
+        // Send a message to the parent page with the selected item
+        window.parent.postMessage({ selectedItem: itemName }, '*');
+    }
+  </script>
 </head>
 <body>
+
     <div class="try">
-        <div class="card">
+        <div class="card" onclick="selectItem('Onions')">
             <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Onions</center></p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" onclick="selectItem('Tomatoes')">
             <img src="https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Tomatoes</center></p>

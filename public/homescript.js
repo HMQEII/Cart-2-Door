@@ -60,3 +60,38 @@ document.getElementById('search-box').addEventListener('keyup', function (event)
     }
 });
 
+
+function addToSelectedListAndShowIframe( iframeId, itemName) {
+    addToSelectedList(itemName);
+    showIframe(iframeId, itemName);
+}
+
+const selectedItems = [];
+
+function addToSelectedList(id) {
+    selectedItems.push(id);
+}
+
+// Function to handle messages from the iframe
+function handleMessage(event) {
+    if (event.data && event.data.selectedItem) {
+        // Add the selected item to the array
+        selectedItems.push(event.data.selectedItem);
+
+        // Display the selected items in an alert
+        displaySelectedItems();
+    }
+}
+
+// Add an event listener to listen for messages from the iframe
+window.addEventListener('message', handleMessage);
+
+// Function to display selected items
+function displaySelectedItems() {
+    if (selectedItems.length > 0) {
+        alert(selectedItems.join('\n'));
+    } else {
+        alert('No items selected.');
+    }
+}
+
