@@ -416,7 +416,7 @@ header {
 .card-body{
     justify-content: space-;
 }
-.card_img:hover {
+.card:hover {
     box-shadow: 2px 2px 10px black;
     transition: .3s;
 }

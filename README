@@ -7,3 +7,6 @@ git commit -m 'Your message'
 git push -u master           //executed only once
 git push                     //for further push
 git log --all                //for knowing who commited what and when
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git clone https://github.com/your-username/your-repo.git

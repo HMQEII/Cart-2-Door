@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+<link href="checkout.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="./Images/SHLocal_logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
+    <title>Checkout page</title>
+  </head>
+  <body class="bg-light">
+    <!-- aaron's shiity code start -->
+    <header>
+      <div class="logo">
+          <a href="/Home.html">
+            <img src="./Images/SHLocal_logo.png" width= '77px' height='67px 'alt="SHLocal">
+          </a>
+      </div>
+      <nav class="navigation">
+          <div class="search-cont">
+              <span class="search-icon"><i class="fas fa-search"></i></span>
+            <input type="search" id="search-box"  class="search-box">
+          </div>
+          <a href="">Shopkeeper/Deliverer</a>
+          <a href="" class="s_one">Shops</a>
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <ion-icon name="person-circle-outline" class="usericon"></ion-icon>
+                  <label id="userid">#</label>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><ion-icon class="subionicons" name="person"></ion-icon>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><ion-icon class="subionicons" name="cart"></ion-icon>Cart</a></li>
+                <li><a class="dropdown-item" href="/WelcomePage.html"><ion-icon class="subionicons" name="power"></ion-icon>Log Out</a></li>
+              </ul>
+            </div>
+      </nav>
+  </header>
+       <!-- aaron's shiity code end -->
+
+  
+    <div class="container">
+      <div class="py-5 text-center">
+        <img
+          class="mb-4 d-block mx-auto mt-5"
+          src="./Images/SHLocal_logo.png"
+          alt="our logo"
+          width="72"
+          height="72"
+        />
+
+        <h2>Checkout</h2>
+        <p class="lead">
+          Here is the summary of all your products that you added to the cart
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <h4 class="mb-3">Shipping Address</h4>
+      <form novalidate>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              class="form-control"
+              placeholder="John"
+              required
+            />
+            <div class="invalid-feedback">Valid first name is requidred</div>
+          </div>
+          <div class="col-sm-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              class="form-control"
+              placeholder="Smith"
+              required
+            />
+            <div class="invalid-feedback">Valid last name is requidred</div>
+          </div>
+          <div class="col-12">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input
+                id="lastName"
+                type="text"
+                class="form-control"
+                placeholder="jsmith"
+                required
+              />
+              <div class="invalid-feedback">Valid last name is requidred</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="state" class="form-label">State</label>
+            <select id="state" class="form-control">
+              <option value="">Choose..</option>
+              <option value="MH">Andhra Pradesh</option>
+              <option value="AP">Arunachal Pradesh</option>
+              <option value="AS">Assam</option>
+              <option value="BH">Bihar</option>
+            </select>
+            <div class="invalid-feedback">Valid last name is requidred</div>
+          </div>
+          <div class="col-md-4">
+            <label for="city" class="form-label">City</label>
+            <select id="city" class="form-control">
+              <option value="">Choose..</option>
+              <option value="adoni">Adoni</option>
+              <option value="itanagar">Itanagar</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="pune">Pune</option>
+            </select>
+            <div class="invalid-feedback">Valid last name is requidred</div>
+          </div>
+          <div class="col-md-3">
+            <label for="pincode" class="form-label">Pincode</label>
+            <input
+              id="1234"
+              type="number"
+              class="form-control"
+              placeholder="400092"
+              required
+            />
+            <div class="invalid-feedback">Valid last name is requidred</div>
+          </div>
+          <hr class="my-4" />
+          <div class="col-12">
+            <div class="form-check">
+              <input
+                id="sameAddress"
+                type="checkbox"
+                class="form-check-input"
+              />
+              <label class="form-check-label" for="sameAddress"
+                >Billing address is the same as shipping.</label
+              >
+            </div>
+            <div class="form-check">
+              <input id="saveinfo" type="checkbox" class="form-check-input" />
+              <label class="form-check-label" for="sameinfo"
+                >Save this info.</label
+              >
+            </div>
+          </div>
+          <hr class="my-4" />
+          <h4>Address of the seller</h4>
+          <label>
+            Seller 1:
+            Xyz,4001,adjdaoija
+            dajdia
+            dajdaoijaoidja
+            Borivali(West)
+          </label>
+          <label>
+            Seller 2 :
+            Xyz,4001,adjdaoija
+            dajdia
+            dajdaoijaoidja
+            Borivali(West)
+          </label>
+          <hr class="my-4" />
+          <h4 class="mb-3">Payments</h4>
+
+          <div class="form-check">
+            <input
+              id="COD"
+              name="paymentMethod"
+              type="radio"
+              class="form-check-input"
+              required
+              checked
+            />
+            <label for="COD">Cash on delivery</label>
+          </div>
+          <div class="form-check">
+            <input
+              id="paypal"
+              name="paymentMethod"
+              type="radio"
+              class="form-check-input"
+              required
+              checked
+            />
+            <label for="paypal">PayPal</label>
+          </div>
+          <hr class="my-4">
+
+          <button class="btn btn-primary btn-lg">Place order</button>
+          <button class="btn btn-secondary btn-lg mb-3">Cancel transaction</button>
+        </div>
+      </form>
+    </div>
+        <!-- aaron's shitty code start -->
+        <footer class="footer">
+          <div class="navigation-foot">
+              
+              <div class="row">
+                  <div class="footer-col">
+                      <h4>Get Help</h4>
+                      <ul class="ul1">
+                          <li><a href='#'>FAQ</a></li>
+                          <li><a href='#'>Shipping</a></li>
+                          <li><a href='#'>Returns</a></li>
+                          <li><a href='#'>Payment Options</a></li>
+                      </ul>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Company</h4>
+                      <ul class="ul1">
+                          
+                          <li><a href='#'>Privacy Policy</a></li>
+                          <li><a href='#'>Affilliate Program</a></li>
+                      </ul>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Contact Us</h4>
+                      <ul class="ul1">
+                          <li><a href="mailto:cart2door@gmail.com">support@c2d.com</a></li>
+                          <li><p>9169420569</p></li>
+                      </ul>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Follow Us</h4>
+                      <div class="social-media-links">
+                          <a href='#'><i class='fab fa-facebook-f'></i></a>
+                          <a href='#'><i class='fab fa-instagram'></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+         </footer>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+         <script src="homeauth.js"></script>
+         <script src="homescript.js"></script>
+         <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+     (function(){
+     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+     s1.async=true;
+     s1.src='https://embed.tawk.to/64c22bf8cc26a871b02b872a/1h6b7nhcu';
+     s1.charset='UTF-8';
+     s1.setAttribute('crossorigin','*');
+     s0.parentNode.insertBefore(s1,s0);
+     })();
+     </script>
+     <!--End of Tawk.to Script-->
+         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!-- aaron's shitty code end -->
+  </body>
+</html>

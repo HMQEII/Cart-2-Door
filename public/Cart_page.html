@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C2D_Cart</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Cart_page.css" />
+    <link rel="stylesheet" href="handf.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/SHLocal_logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
+  </head>
+  <body>
+    <style>
+      .trash-icon
+      {
+        font-size: 24px;
+        color: black;
+      }
+      
+    </style>
+    <header>
+      <div class="logo">
+          <a href="/Home.html">
+            <img src="./Images/SHLocal_logo.png" width= '77px' height='67px 'alt="SHLocal">
+          </a>
+      </div>
+      <nav class="navigation">
+          <div class="search-cont">
+              <span class="search-icon"><i class="fas fa-search"></i></span>
+            <input type="search" id="search-box"  class="search-box">
+          </div>
+          <a href="">Shopkeeper/Deliverer</a>
+          <a href="" class="s_one">Shops</a>
+          <a href="/Home.html" class="s_one">Home</a>
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <ion-icon name="person-circle-outline" class="usericon" ></ion-icon>
+                  <label id="userid">#</label>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><ion-icon class="subionicons" name="person"></ion-icon>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><ion-icon name="gift-outline" class="subionicons"></ion-icon>Orders</a></li>
+                <li><a class="dropdown-item" href="#"><ion-icon name="albums-outline" class="subionicons"></ion-icon>Advertise</a></li>
+                <li><a class="dropdown-item" href="/Cart_page.html"><ion-icon class="subionicons" name="cart"></ion-icon>Cart</a></li>
+                <li><a class="dropdown-item" href="/WelcomePage.html"><ion-icon class="subionicons" name="power"></ion-icon>Log Out</a></li>
+              </ul>
+            </div>
+      </nav>
+  </header>
+    <section id="blog-home" class="pt-5 mt-5 container">
+      <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
+      <hr />
+    </section>
+
+    <section id="cart-container" class="container my-5">
+      <table width="100%" class="tablelook">
+        <thead>
+          <tr>
+            <td>Remove</td>
+            <td>Image</td>
+            <td>Shop Address</td>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Total</td>
+          </tr>
+        </thead>
+        <tbody >
+          <tr>
+            <td>
+              <a href="#" class="trash-icon"><ion-icon  name="trash-outline"></ion-icon></a>
+            </td>
+            <td><img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" alt="" /></td>
+            <td>Dmart</td>
+            <td> Onions </td>
+            <td> £65 </td>
+            <td><input class="w-25 pl-1" value="1" type="number" /></td>
+            <td> £130.00 </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#" class="trash-icon" ><ion-icon name="trash-outline"></a>
+            </td>
+            <td><img src="https://drive.google.com/uc?id=1eLZu31eOr3q2o4fHC0_phAuGmYjnVMCb" alt="" /></td>
+            <td>Mamta Novelty</td>
+            <td>Scissor</td>
+            <td> £65 </td>
+            <td><input class="w-25 pl-1" value="1" type="number" /></td>
+            <td> £130.00 </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#" class="trash-icon" ><ion-icon name="trash-outline"></a>
+            </td>
+            <td><img src="https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty" alt="" /></td>
+            <td>Big Basket</td>
+            <td> Tomatoes </td>
+            <td> £65 </td>
+            <td><input class="w-25 pl-1" value="1" type="number" /></td>
+            <td> £130.00 </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="cart-bottom" class="container">
+      <div class="row">
+        <div class="coupon col-lg-6 col-md-6 col-12 mb-4">
+          <div>
+            <h5>COUPON</h5>
+            <p>Enter your coupon code if you have one.</p>
+            <input type="text" placeholder="Coupon Code" />
+            <button>APPLY COUPON</button>
+          </div>
+        </div>
+        <div class="total col-lg-6 col-md-6 col-12">
+          <div class="mb-1">
+            <h5>CART TOTAL</h5>
+            <div class="d-flex justify-content-between">
+              <h6>Subtotal</h6>
+              <p>£215.00</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h6>Shipping</h6>
+              <p>£215.00</p>
+            </div>
+            <hr class="second-hr">
+            <div class="d-flex justify-content-between">
+              <h6>Total</h6>
+              <p>£215.00</p>
+            </div>
+            <button class="ml-auto">PROCEED TO CHECKOUT</button>
+            <br>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="navigation-foot">
+          <div class="row">
+              <div class="footer-col">
+                  <h4>Get Help</h4>
+                  <ul class="ul1">
+                      <li><a href='#'>FAQ</a></li>
+                      <li><a href='#'>Shipping</a></li>
+                      <li><a href='#'>Returns</a></li>
+                      <li><a href='#'>Payment Options</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Company</h4>
+                  <ul class="ul1">
+                      
+                      <li><a href='#'>Privacy Policy</a></li>
+                      <li><a href='#'>Affilliate Program</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Contact Us</h4>
+                  <ul class="ul1">
+                      <li><a href="mailto:cart2door@gmail.com">support@c2d.com</a></li>
+                      <li><p>+91 9169420569</p></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Follow Us</h4>
+                  <div class="social-media-links">
+                      <a href='#'><i class='fab fa-facebook-f'></i></a>
+                      <a href='#'><i class='fab fa-instagram'></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+     </footer>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+     <script src="homeauth.js"></script>
+     <script src="homescript.js"></script>
+     <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+ (function(){
+ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+ s1.async=true;
+ s1.src='https://embed.tawk.to/64c22bf8cc26a871b02b872a/1h6b7nhcu';
+ s1.charset='UTF-8';
+ s1.setAttribute('crossorigin','*');
+ s0.parentNode.insertBefore(s1,s0);
+ })();
+ </script>
+ <!--End of Tawk.to Script-->
+     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="homeauth.js"></script>
+  </body>
+</html>
