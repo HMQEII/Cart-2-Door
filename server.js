@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path"); // Import the 'path' module
+// const open = require("open");
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -93,7 +94,16 @@ app.post("/login", async (req, res) => {
 
 
 
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//     console.log(`Node.js is currently active and listening on port ${port}`);
+// });
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Node.js is currently active and listening on port ${port}`);
+
+    // Open the desired URL in the default web browser
+    const { exec } = require("child_process");
+    exec(`start http://localhost:${port}/WelcomePage.html`); // Replace with the actual URL you want to open
 });
+

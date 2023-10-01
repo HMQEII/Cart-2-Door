@@ -31,6 +31,20 @@ function showIframe(cardName, cardText) {
     }
 }
 
+function hideAllIframes() {
+    // Get all iframes with a specific class (e.g., 'hidden-iframe')
+    const iframes = document.querySelectorAll('.hidden-iframe');
+    document.getElementById('cardTitle').textContent=" ";
+    // Hide each iframe
+    iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+    });
+}
+
+function clearSelectedThings(){
+    clearSelectedItems();
+    hideAllIframes();
+}
 
 function performSearch() {
     // Get the search query from the input
@@ -62,11 +76,20 @@ document.getElementById('search-box').addEventListener('keyup', function (event)
 
 
 function addToSelectedListAndShowIframe( iframeId, itemName) {
+    clearSelectedItems();
     addToSelectedList(itemName);
     showIframe(iframeId, itemName);
 }
 
 const selectedItems = [];
+
+function clearSelectedItems() {
+    const selecstoreElement = document.getElementById('selecshop');
+    const selecitemElement = document.getElementById('selecitem');
+    selecstoreElement.textContent='#';
+    selecitemElement.textContent='#';
+    selectedItems.length = 0; // Clear the array
+}
 
 function addToSelectedList(id) {
     selectedItems.push(id);
@@ -86,12 +109,42 @@ function handleMessage(event) {
 // Add an event listener to listen for messages from the iframe
 window.addEventListener('message', handleMessage);
 
-// Function to display selected items
+//display the selected stuff in the label made in the html page
 function displaySelectedItems() {
+    const selecstoreElement = document.getElementById('selecshop');
+    const selecitemElement = document.getElementById('selecitem');
+
     if (selectedItems.length > 0) {
-        alert(selectedItems.join('\n'));
+        if (selecstoreElement.textContent === '#') {
+            selecstoreElement.textContent = selectedItems.shift(); // Display the first item in selecshop
+        }
+        if (selectedItems.length > 0) {
+            selecitemElement.textContent = selectedItems.join('\n'); // Display the remaining items in selecitem
+        }
     } else {
-        alert('No items selected.');
+        selecstoreElement.textContent = 'No items selected.';
     }
 }
 
+// Add this code to your main page JavaScript
+function scrollToSelectedLabel() {
+    const selectedLabel = document.getElementById('selected-label');
+
+    if (selectedLabel) {
+        const scrollPosition = selectedLabel.getBoundingClientRect().top + window.scrollY - 100;
+
+        // Scroll to the calculated position
+        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+    }
+}
+
+function handleMessageforscroll(event) {
+    if (event.data && event.data.selectedItem) {
+        // Add the selected item to the array
+        selectedItems.push(event.data.selectedItem);
+
+        // Scroll to the "Selected" label
+        scrollToSelectedLabel();
+    }
+}
+window.addEventListener('message', handleMessageforscroll);

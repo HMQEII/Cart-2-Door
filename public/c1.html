@@ -27,25 +27,25 @@
               <p class="card-text" ><center>Tomatoes</center></p>
             </div>
         </div>
-        <div class="card" >
+        <div class="card" onclick="selectItem('Cabbage')">
             <img src="https://drive.google.com/uc?id=1WWTxCa3pxwXK4RHMxiznv04ftfl4KiOf" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cabbage</center></p>
             </div>
         </div>
-        <div class="card" >
+        <div class="card" onclick="selectItem('Mint')">
             <img src="https://drive.google.com/uc?id=1vN1Zk_l4NfJyhE-2hq-G9V0VWlmoVvFB" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Mint</center></p>
             </div>
         </div>
-        <div class="card" > 
+        <div class="card" onclick="selectItem('Cucumber')"> 
             <img src="https://drive.google.com/uc?id=119ORFOAXI3fMSzYgsxwk074bmTFFew56" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cucumber</center></p>
             </div>
         </div>
-        <div class="card" >
+        <div class="card" onclick="selectItem('Carrot')">
             <img src="https://drive.google.com/uc?id=1nhevCdohj2kMdHU2ZcdZdnR9wVAeWRgD" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Carrot</center></p>
@@ -53,5 +53,18 @@
         </div>
         
     </div>
+    <script>
+      // Add this code to each iframe page (e.g., c1.html, c2.html, etc.)
+      document.addEventListener('DOMContentLoaded', function () {
+          const cardElement = document.querySelector('.card'); // Replace with the actual selector for your card elements
+
+          cardElement.addEventListener('click', function () {
+              // Scroll to the "Selected" label in the parent window
+              window.parent.scrollToSelectedLabel();
+          });
+      });
+
+    </script>
+
 </body>
 </html>
