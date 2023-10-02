@@ -164,13 +164,27 @@
                         <label id="selecitem">#</label>
                     </div>
                     <hr class="second-hr">
-                    <button class="ml-auto"><a href="/checkout.html">PROCEED TO CHECKOUT</a></button>
+                    <button class="ml-auto"onclick="redirectToCheckout()">PROCEED TO CHECKOUT</button>
                     <button class="ml-auto">ADD TO CART</button>
                     <button class="ml-auto" onclick="clearSelectedThings()">CLEAR</button>
                     <br>
                     </div>
                 </div> 
             </center>
+            <script>
+                // Function to get the selected shop and items and redirect to checkout.html
+                function redirectToCheckout() {
+                    // Get the latest value of selecshop and selecitem
+                    const shopName = document.getElementById('selecshop').textContent;
+                    const itemName = document.getElementById('selecitem').textContent;
+
+                    // Store the details in local storage
+                    localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName }));
+
+                    // Redirect to checkout.html
+                    window.location.href = 'checkout.html';
+                }
+            </script>
             <style>
                 .d-flex label{
                     color:black !important;

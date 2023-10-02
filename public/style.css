@@ -43,7 +43,22 @@
     width: 500px;
     height: 450px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    
+    transform: translateX(-100%); /* Start the banner off-screen to the left */
+    transition: transform 1s ease;
+}
+
+@keyframes scrollIn {
+    0% {
+        transform: translateX(-100%); /* Start position */
+    }
+    100% {
+        transform: translateX(0); /* End position (fully visible) */
+    }
+}
+
+/* Apply the animation when you want the banner to scroll in */
+.banner.show {
+    animation: scrollIn 2s forwards; /* Apply the animation and keep the final state */
 }
 body {
     display: flex;

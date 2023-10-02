@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            font-family: 'Poppins' , sans-serif;
+        }
+        .cart-page{
+            /* margin: 20px auto; */
+            padding: 80px;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-info{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        /* .cart-info img{
+            width: 15%;
+        } */
+        th{
+            text-align: left;
+            padding: 5px;
+            color: darkcyan;
+            background-color: beige;
+            font-weight: normal;
+
+        }
+        td{
+            padding: 10px 5px;
+        }
+        td input{
+            width: 40px;
+            height: 30px;
+            padding: 5px;
+        }
+        td a{
+            color: #ff523b;
+            font-size: 12px;
+        }
+        td img{
+            width: 100px;
+            margin-right:10px;
+        }
+        .total-price{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .total-price table{
+            border-top: 3px solid #ff523b;
+            width: 100%;
+            max-width: 400px;
+        }
+        td:last-child{
+            text-align: right;
+        }
+        th:last-child{
+            text-align: right;
+        }
+
+        @media only screen and (max-width: 600px){
+            .cart-info p{
+                display: none;
+            }
+        }
+
+    </style>
+    <div class="small-container cart-page">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>SubTotal</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" alt="Onions">
+                        <div>
+                            <p>Onions</p>
+                            <small>Price: £50.00</small><br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1" min="1"></td>
+                <td>£50.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" alt="Onions">
+                        <div>
+                            <p>Onions</p>
+                            <small>Price: £50.00</small><br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1" min="1"></td>
+                <td>£50.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" alt="Onions">
+                        <div>
+                            <p>Onions</p>
+                            <small>Price: £50.00</small><br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1" min="1"></td>
+                <td>£50.00</td>
+            </tr>
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>£200</td>
+                </tr>
+                <tr>
+                    <td>Charges + Tax</td>
+                    <td>£15</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>£215</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,3 +4,117 @@
 #place-order{
   background-color: #007bff;
 }
+
+/* order summary code begins */
+
+.cart-page{
+  display:flex;
+  flex-direction: row;
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.cart-info{
+  display: flex;
+  flex-wrap: wrap;
+}
+/* .cart-info img{
+  width: 15%;
+} */
+th{
+  text-align: left;
+  padding: 5px;
+  color: black;
+  background-color: #f9c19d;
+  font-weight: normal;
+  border-radius: 5px;
+}
+td{
+  padding: 10px 5px;
+}
+td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+td a{
+  color: #ff523b;
+  font-size: 12px;
+}
+td img{
+  width: 100px;
+  margin-right:10px;
+}
+.rhs-section{
+  padding:30px;
+  width: 40%;
+  height: 90px;
+  
+}
+.total-price{
+  padding:10px;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+.total-price table{
+  border-top: 8px solid darkcyan;
+  width: 100%;
+  max-width: 400px;
+}
+.totalamt{
+  border-top: 2px solid black;
+}
+td:last-child{
+  text-align: right;
+}
+th:last-child{
+  text-align: right;
+}
+.quantity-input {
+  display: flex;
+  align-items: center;
+}
+.minusicon,
+.plusicon{
+  font-size: 28px;
+}
+.decrement-button,
+.increment-button {
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: grey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 6px;
+}
+.decrement-button :hover{
+  border-radius: 50px;
+  background: none;
+  border: none;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
+}
+.increment-button :hover{
+  border-radius: 50px;
+  background: none;
+  border: none;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
+}
+.quantity-input input {
+  width: 40px;
+  text-align: center;
+  border: none;
+}
+
+@media only screen and (max-width: 600px){
+  .cart-info p{
+      display: none;
+  }
+}

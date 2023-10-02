@@ -5,5 +5,6 @@ const username = localStorage.getItem("username");
 if (username) {
     // Update the DOM element with the username
     document.getElementById("userid").textContent = username;
+    
     // alert(username);
 }

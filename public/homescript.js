@@ -45,6 +45,9 @@ function clearSelectedThings(){
     clearSelectedItems();
     hideAllIframes();
 }
+// JavaScript code to show the banner
+const banner = document.querySelector('.banner');
+banner.classList.add('show'); // Add the 'show' class to trigger the animation
 
 function performSearch() {
     // Get the search query from the input
