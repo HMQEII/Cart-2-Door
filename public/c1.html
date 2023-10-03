@@ -6,46 +6,54 @@
     <link rel="stylesheet" href="C_Stlyes.css">
     <title>Document</title>
     <script>
+      function sendingvalues(itemName, image){
+        selectItem(itemName);
+        selectImage(image);
+      }
         function selectItem(itemName) {
-        // Send a message to the parent page with the selected item
-        window.parent.postMessage({ selectedItem: itemName }, '*');
-    }
+            // Send a message to the parent page with the selected item and image
+            window.parent.postMessage({ selectedItem: itemName }, '*');
+        }
+        function selectImage(image){
+          window.parent.postMessage({ selectedImage: image }, '*');
+        }
+
   </script>
 </head>
 <body>
 
     <div class="try">
-        <div class="card" onclick="selectItem('Onions')">
+        <div class="card" onclick="sendingvalues('Onions', 'https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry')">
             <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Onions</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Tomatoes')">
+        <div class="card" onclick="sendingvalues('Tomatoes','https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty')">
             <img src="https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Tomatoes</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Cabbage')">
+        <div class="card" onclick="sendingvalues('Cabbage','https://drive.google.com/uc?id=1WWTxCa3pxwXK4RHMxiznv04ftfl4KiOf')">
             <img src="https://drive.google.com/uc?id=1WWTxCa3pxwXK4RHMxiznv04ftfl4KiOf" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cabbage</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Mint')">
+        <div class="card" onclick="sendingvalues('Mint','https://drive.google.com/uc?id=1vN1Zk_l4NfJyhE-2hq-G9V0VWlmoVvFB')">
             <img src="https://drive.google.com/uc?id=1vN1Zk_l4NfJyhE-2hq-G9V0VWlmoVvFB" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Mint</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Cucumber')"> 
+        <div class="card" onclick="sendingvalues('Cucumber','https://drive.google.com/uc?id=119ORFOAXI3fMSzYgsxwk074bmTFFew56')"> 
             <img src="https://drive.google.com/uc?id=119ORFOAXI3fMSzYgsxwk074bmTFFew56" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cucumber</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Carrot')">
+        <div class="card" onclick="sendingvalues('Carrot','https://drive.google.com/uc?id=1nhevCdohj2kMdHU2ZcdZdnR9wVAeWRgD')">
             <img src="https://drive.google.com/uc?id=1nhevCdohj2kMdHU2ZcdZdnR9wVAeWRgD" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Carrot</center></p>

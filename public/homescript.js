@@ -85,7 +85,7 @@ function addToSelectedListAndShowIframe( iframeId, itemName) {
 }
 
 const selectedItems = [];
-
+let selectedImage = '';
 function clearSelectedItems() {
     const selecstoreElement = document.getElementById('selecshop');
     const selecitemElement = document.getElementById('selecitem');
@@ -106,6 +106,10 @@ function handleMessage(event) {
 
         // Display the selected items in an alert
         displaySelectedItems();
+    }
+    if (event.data.selectedImage) {
+        // Handle the selected image
+        selectedImage = event.data.selectedImage;
     }
 }
 

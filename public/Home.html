@@ -113,10 +113,10 @@
                   <p class="card-text" ><center>Apolo Pharmacy</center></p>
                 </div>
             </div>
-            <div class="card" onclick="addToSelectedListAndShowIframe('c3','Big Basket')"> 
-                <img src="https://drive.google.com/uc?id=1CQgjbHkROJk0esRSAYk5SqB5-TXHl223" class="card_img" alt="..." >
+            <div class="card" onclick="addToSelectedListAndShowIframe('c3','Adarsh Supermarket')"> 
+                <img src="https://drive.google.com/uc?id=1x_GHb7ksQ-EpfkfhtcwArJ4hVRL6KB6h" class="card_img" alt="..." >
                 <div class="card-body">
-                  <p class="card-text" ><center>Big Basket</center></p>
+                  <p class="card-text" ><center>Adarsh Supermarket</center></p>
                 </div>
             </div>
             <div class="card" onclick="addToSelectedListAndShowIframe('c4','Govind Store')">
@@ -177,9 +177,10 @@
                     // Get the latest value of selecshop and selecitem
                     const shopName = document.getElementById('selecshop').textContent;
                     const itemName = document.getElementById('selecitem').textContent;
-
+                    const Image = selectedImage;
                     // Store the details in local storage
-                    localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName }));
+                    localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName, Image }));
+                    // alert(JSON.stringify(Image));
 
                     // Redirect to checkout.html
                     window.location.href = 'checkout.html';

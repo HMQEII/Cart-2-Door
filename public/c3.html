@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C_Stlyes.css">
+    <title>Document</title>
+    <script>
+        function selectItem(itemName) {
+        // Send a message to the parent page with the selected item
+        window.parent.postMessage({ selectedItem: itemName }, '*');
+    }
+  </script>
+</head>
+<body>
+
+    <div class="try">
+        <div class="card" onclick="selectItem('Amul Butter')">
+            <img src="https://drive.google.com/uc?id=1xKmUIUY6_yz7CV5gWbi2CZ-yzwwnWNF0" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Amul Butter</center></p>
+            </div>
+        </div>
+        <div class="card" onclick="selectItem('Amul Cheese')">
+            <img src="https://drive.google.com/uc?id=1-Okyeoyw_fc4cNKmbXweWPMYy3r1o5w4" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Amul Cheese</center></p>
+            </div>
+        </div>
+        <div class="card" onclick="selectItem('Britannia Brown Bread')">
+            <img src="https://drive.google.com/uc?id=1Jpc7ppNDu15B0EhMyNqRgMEjebf0JKUd" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Britannia Brown Bread</center></p>
+            </div>
+        </div>
+        <div class="card" onclick="selectItem('Nutri Choice Digestive')"> 
+            <img src="https://drive.google.com/uc?id=1kh_S19elMFfMK1FmRy5mb873KLjQGUCQ" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Nutri Choice Digestive</center></p>
+            </div>
+        </div>
+        <div class="card" onclick="selectItem('Bourbon Biscuit')">
+            <img src="https://drive.google.com/uc?id=1XrFfMeCJzopJTKFvlEb5ESmEYzA5h4yg" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Bourbon Biscuit</center></p>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+      // Add this code to each iframe page (e.g., c1.html, c2.html, etc.)
+      document.addEventListener('DOMContentLoaded', function () {
+          const cardElement = document.querySelector('.card'); // Replace with the actual selector for your card elements
+
+          cardElement.addEventListener('click', function () {
+              // Scroll to the "Selected" label in the parent window
+              window.parent.scrollToSelectedLabel();
+          });
+      });
+
+    </script>
+
+</body>
+</html>
