@@ -6,40 +6,48 @@
     <link rel="stylesheet" href="C_Stlyes.css">
     <title>Document</title>
     <script>
+      function sendingvalues(itemName, image){
+        selectItem(itemName);
+        selectImage(image);
+      }
         function selectItem(itemName) {
-        // Send a message to the parent page with the selected item
-        window.parent.postMessage({ selectedItem: itemName }, '*');
-    }
+            // Send a message to the parent page with the selected item and image
+            window.parent.postMessage({ selectedItem: itemName }, '*');
+        }
+        function selectImage(image){
+          window.parent.postMessage({ selectedImage: image }, '*');
+        }
+
   </script>
 </head>
 <body>
 
     <div class="try">
-        <div class="card" onclick="selectItem('Amul Butter')">
+        <div class="card" onclick="sendingvalues('Amul Butter','https://drive.google.com/uc?id=1xKmUIUY6_yz7CV5gWbi2CZ-yzwwnWNF0')">
             <img src="https://drive.google.com/uc?id=1xKmUIUY6_yz7CV5gWbi2CZ-yzwwnWNF0" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Amul Butter</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Amul Cheese')">
+        <div class="card" onclick="sendingvalues('Amul Cheese','https://drive.google.com/uc?id=1-Okyeoyw_fc4cNKmbXweWPMYy3r1o5w4')">
             <img src="https://drive.google.com/uc?id=1-Okyeoyw_fc4cNKmbXweWPMYy3r1o5w4" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Amul Cheese</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Britannia Brown Bread')">
+        <div class="card" onclick="sendingvalues('Britannia Brown Bread','https://drive.google.com/uc?id=1Jpc7ppNDu15B0EhMyNqRgMEjebf0JKUd')">
             <img src="https://drive.google.com/uc?id=1Jpc7ppNDu15B0EhMyNqRgMEjebf0JKUd" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Britannia Brown Bread</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Nutri Choice Digestive')"> 
+        <div class="card" onclick="sendingvalues('Nutri Choice Digestive','https://drive.google.com/uc?id=1kh_S19elMFfMK1FmRy5mb873KLjQGUCQ')"> 
             <img src="https://drive.google.com/uc?id=1kh_S19elMFfMK1FmRy5mb873KLjQGUCQ" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Nutri Choice Digestive</center></p>
             </div>
         </div>
-        <div class="card" onclick="selectItem('Bourbon Biscuit')">
+        <div class="card" onclick="sendingvalues('Bourbon Biscuit','https://drive.google.com/uc?id=1XrFfMeCJzopJTKFvlEb5ESmEYzA5h4yg')">
             <img src="https://drive.google.com/uc?id=1XrFfMeCJzopJTKFvlEb5ESmEYzA5h4yg" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Bourbon Biscuit</center></p>
