@@ -7,8 +7,14 @@
     <title>Document</title>
     <script>
       function sendingvalues(itemName, image){
+        const cardElement = event.currentTarget;
+        const price = cardElement.querySelector('.card-price').getAttribute('data-price');
+        // alert(price);
         selectItem(itemName);
         selectImage(image);
+        itemPrice(price);
+
+        
       }
         function selectItem(itemName) {
             // Send a message to the parent page with the selected item and image
@@ -17,46 +23,63 @@
         function selectImage(image){
           window.parent.postMessage({ selectedImage: image }, '*');
         }
+        function itemPrice(price){
+          window.parent.postMessage({ itemPrice: price }, '*');
+        }
 
   </script>
+  
 </head>
 <body>
-
+  
     <div class="try">
         <div class="card" onclick="sendingvalues('Onions', 'https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry')">
             <img src="https://drive.google.com/uc?id=1vapt33oIXxtyMGwXyZYQEx30roXwU5ry" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Onions</center></p>
+              <p class="card-price" id="cip1" data-price="40"><center>£40</center></p>
+            </div>
+        </div>
+        <div class="card" onclick="sendingvalues('Potatoes', '')">
+            <img src="" class="card_img" alt="..." >
+            <div class="card-body">
+              <p class="card-text" ><center>Potatoes</center></p>
+              <p class="card-price" id="cip1" data-price="35"><center>£35</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Tomatoes','https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty')">
             <img src="https://drive.google.com/uc?id=1HY6R6gOTl2bqaQ2aKSZGStpvBB1n_Xty" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Tomatoes</center></p>
+              <p class="card-price" id="cip2" data-price="30"><center>£30</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Cabbage','https://drive.google.com/uc?id=1WWTxCa3pxwXK4RHMxiznv04ftfl4KiOf')">
             <img src="https://drive.google.com/uc?id=1WWTxCa3pxwXK4RHMxiznv04ftfl4KiOf" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cabbage</center></p>
+              <p class="card-price"id="cip3" data-price="25"><center>£25</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Mint','https://drive.google.com/uc?id=1vN1Zk_l4NfJyhE-2hq-G9V0VWlmoVvFB')">
             <img src="https://drive.google.com/uc?id=1vN1Zk_l4NfJyhE-2hq-G9V0VWlmoVvFB" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Mint</center></p>
+              <p class="card-price" id="cip4" data-price="10"><center>£10</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Cucumber','https://drive.google.com/uc?id=119ORFOAXI3fMSzYgsxwk074bmTFFew56')"> 
             <img src="https://drive.google.com/uc?id=119ORFOAXI3fMSzYgsxwk074bmTFFew56" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Cucumber</center></p>
+              <p class="card-price" id="cip5" data-price="40"><center>£40</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Carrot','https://drive.google.com/uc?id=1nhevCdohj2kMdHU2ZcdZdnR9wVAeWRgD')">
             <img src="https://drive.google.com/uc?id=1nhevCdohj2kMdHU2ZcdZdnR9wVAeWRgD" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Carrot</center></p>
+              <p class="card-price" id="cip6" data-price="60"><center>£60</center></p>
             </div>
         </div>
         
@@ -73,6 +96,23 @@
       });
 
     </script>
+    <!-- <script>
+      function setPriceInCenterTag() {
+        const cardElements = document.querySelectorAll('.card');
+    
+        cardElements.forEach((cardElement, index) => {
+          const price = cardElement.querySelector('.card-price').getAttribute('data-price');
+          const priceCenter = cardElement.querySelector('.card-price center');
+          priceCenter.textContent = `£${price}`;
+        });
+      }
+    
+      // Call the function when the page is loaded
+      window.addEventListener('load', setPriceInCenterTag);
+    </script> -->
+    
+    
+    
 
 </body>
 </html>

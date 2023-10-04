@@ -178,8 +178,10 @@
                     const shopName = document.getElementById('selecshop').textContent;
                     const itemName = document.getElementById('selecitem').textContent;
                     const Image = selectedImage;
+                    const price = itemPrice;
+                    // alert(price);
                     // Store the details in local storage
-                    localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName, Image }));
+                    localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName, Image, price }));
                     // alert(JSON.stringify(Image));
 
                     // Redirect to checkout.html

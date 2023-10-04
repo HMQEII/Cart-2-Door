@@ -25,7 +25,19 @@ const UserSchema = new mongoose.Schema({
     email: String,
     password: String,
 });
+const OrderSchema = new mongoose.Schema({
+    firstName: String,
+  lastName: String,
+  username: String,
+  state: String,
+  city: String,
+  pincode: Number,
+  total: Number,
+  orderCompleted: String,
+  timestamp: { type: Date, default: Date.now },
+  });
 
+const Order = mongoose.model("Order", OrderSchema);
 const User = mongoose.model("User", UserSchema);
 
 //checking process for registration boxe
@@ -92,6 +104,43 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//send data to Order's DB table
+app.post("/checkout", async (req, res) => {
+    const {
+      firstName,
+      lastName,
+      username,
+      state,
+      city,
+      pincode,
+      total,
+    } = req.body;
+  
+    try {
+      // Create a new order
+      const newOrder = new Order({
+        firstName,
+        lastName,
+        username,
+        state,
+        city,
+        pincode,
+        total,
+        orderCompleted: "no", // Set as 'no' by default
+      });
+  
+      // Save the order to the database
+      await newOrder.save();
+  
+      // Checkout successful
+      res.json({ success: true, message: "Order placed successfully!" });
+    } catch (err) {
+      console.error(err);
+      res
+        .status(500)
+        .json({ success: false, message: "Order placement failed. Please try again." });
+    }
+  });
 
 
 // const port = process.env.PORT || 3000;

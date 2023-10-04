@@ -7,8 +7,14 @@
     <title>Document</title>
     <script>
       function sendingvalues(itemName, image){
+        const cardElement = event.currentTarget;
+        const price = cardElement.querySelector('.card-price').getAttribute('data-price');
+        // alert(price);
         selectItem(itemName);
         selectImage(image);
+        itemPrice(price);
+
+        
       }
         function selectItem(itemName) {
             // Send a message to the parent page with the selected item and image
@@ -16,6 +22,9 @@
         }
         function selectImage(image){
           window.parent.postMessage({ selectedImage: image }, '*');
+        }
+        function itemPrice(price){
+          window.parent.postMessage({ itemPrice: price }, '*');
         }
 
   </script>
@@ -27,30 +36,35 @@
             <img src="https://drive.google.com/uc?id=1xKmUIUY6_yz7CV5gWbi2CZ-yzwwnWNF0" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Amul Butter</center></p>
+              <p class="card-price" id="cip1" data-price="115"><center>£115</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Amul Cheese','https://drive.google.com/uc?id=1-Okyeoyw_fc4cNKmbXweWPMYy3r1o5w4')">
             <img src="https://drive.google.com/uc?id=1-Okyeoyw_fc4cNKmbXweWPMYy3r1o5w4" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Amul Cheese</center></p>
+              <p class="card-price" id="cip1" data-price="250"><center>£250</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Britannia Brown Bread','https://drive.google.com/uc?id=1Jpc7ppNDu15B0EhMyNqRgMEjebf0JKUd')">
             <img src="https://drive.google.com/uc?id=1Jpc7ppNDu15B0EhMyNqRgMEjebf0JKUd" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Britannia Brown Bread</center></p>
+              <p class="card-price" id="cip1" data-price="38"><center>£38</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Nutri Choice Digestive','https://drive.google.com/uc?id=1kh_S19elMFfMK1FmRy5mb873KLjQGUCQ')"> 
             <img src="https://drive.google.com/uc?id=1kh_S19elMFfMK1FmRy5mb873KLjQGUCQ" class="card_img" alt="..." >
             <div class="card-body">
               <p class="card-text" ><center>Nutri Choice Digestive</center></p>
+              <p class="card-price" id="cip1" data-price="10"><center>£10</center></p>
             </div>
         </div>
         <div class="card" onclick="sendingvalues('Bourbon Biscuit','https://drive.google.com/uc?id=1XrFfMeCJzopJTKFvlEb5ESmEYzA5h4yg')">
             <img src="https://drive.google.com/uc?id=1XrFfMeCJzopJTKFvlEb5ESmEYzA5h4yg" class="card_img" alt="..." >
             <div class="card-body">
-              <p class="card-text" ><center>Bourbon Biscuit</center></p>
+              <p class="card-text"><center>Bourbon Biscuit</center></p>
+              <p class="card-price" id="cip1" data-price="30"><center>£30</center></p>
             </div>
         </div>
         

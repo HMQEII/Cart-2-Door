@@ -86,6 +86,7 @@ function addToSelectedListAndShowIframe( iframeId, itemName) {
 
 const selectedItems = [];
 let selectedImage = '';
+let itemPrice = '';
 function clearSelectedItems() {
     const selecstoreElement = document.getElementById('selecshop');
     const selecitemElement = document.getElementById('selecitem');
@@ -110,6 +111,11 @@ function handleMessage(event) {
     if (event.data.selectedImage) {
         // Handle the selected image
         selectedImage = event.data.selectedImage;
+    }
+    if (event.data.itemPrice) {
+        // Handle the selected image
+        itemPrice = event.data.itemPrice;
+        // alert(itemPrice);
     }
 }
 
