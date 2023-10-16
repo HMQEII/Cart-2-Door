@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const Razorpay = require('razorpay');
 const path = require("path"); // Import the 'path' module
 // const open = require("open");
 
@@ -155,4 +156,78 @@ app.listen(port, () => {
     const { exec } = require("child_process");
     exec(`start http://localhost:${port}/WelcomePage.html`); // Replace with the actual URL you want to open
 });
+
+
+
+const razorpay = new Razorpay({
+  key_id: "rzp_test_7vCh5UQuRzt3AN", // Replace with your Razorpay API key
+  key_secret: "sYWpjcbVpXcA3fuplJNO99cc", // Replace with your Razorpay API secret
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Serve static files
+app.use(express.static(__dirname + "/public"));
+
+// Endpoint for creating orders
+app.post("/create-order", async (req, res) => {
+  const totalAmountInPaise = req.body.totalAmountInPaise;
+
+  const options = {
+    amount: totalAmountInPaise,
+    currency: "INR",
+  };
+
+  try {
+    const order = await razorpay.orders.create(options);
+
+    res.json({ success: true, order_id: order.id });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Order creation failed." });
+  }
+});
+
+
+
+
+//razorpay request
+// const razorpay = new Razorpay({
+//   key_id: 'rzp_test_7vCh5UQuRzt3AN',
+//   key_secret: 'sYWpjcbVpXcA3fuplJNO99cc',
+// });
+
+// app.post('/create-order', async (req, res) => {
+//   const { totalAmountInPaise } = req.body; // You should send the total amount from the client.
+
+//   const options = {
+//     amount: totalAmountInPaise, // Amount in paise
+//     currency: 'INR', // Currency code (e.g., INR)
+//   };
+
+//   try {
+//     const order = await razorpay.orders.create(options);
+
+//     // Return the order details to the client
+//     res.json(order);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ success: false, message: 'Order creation failed. Please try again.' });
+//   }
+// });
+
+
+// var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
+
+// instance.orders.create({
+//   amount: 50000,
+//   currency: "INR",
+//   receipt: "receipt#1",
+//   notes: {
+//     key1: "value3",
+//     key2: "value2"
+//   }
+// })
+
 

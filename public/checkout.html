@@ -17,6 +17,7 @@
 <link rel="icon" type="image/x-icon" href="./Images/SHLocal_logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
     <title>C2D_Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/razorpay.js"></script>
   </head>
   <body class="bg-light">
     <!-- aaron's shiity code start -->
@@ -67,9 +68,10 @@
         </p>
       </div>
     </div>
+    
     <div class="container">
       <h4 class="mb-3">Delivery Address</h4>
-      <form novalidate>
+      <form novalidate id="checkout-form">
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="firstName" class="form-label" >First Name</label>
@@ -144,7 +146,6 @@
           <div class="col-md-3">
             <label for="pincode" class="form-label">Pincode</label>
             <input
-              id="1234"
               type="number"
               class="form-control"
               placeholder="400092"
@@ -169,7 +170,7 @@
                             <div>
                                 <p id="itemname">Onions</p>
                                 <small id="shopname">Dmart</small><br>
-                                <small>Price: £</small><small id="initialprice">5</small><br>
+                                <small>Price: ₹ </small><small id="initialprice">5</small><br>
                                 <a href="">Remove</a>
                             </div>
                         </div>
@@ -181,7 +182,7 @@
                         <button class="increment-button" type="button"><ion-icon name="add-circle-outline" class="plusicon"></ion-icon></button>
                     </div>
                     </td>
-                    <td>£50.00</td>
+                    <td>₹ 50.00</td>
                 </tr>
             </table>
             <div class="rhs-section">
@@ -189,20 +190,25 @@
                   <table>
                       <tr>
                           <td>SubTotal</td>
-                          <td id="subtotal">£</td>
+                          <td id="subtotal">₹ </td>
                       </tr>
                       <tr>
                           <td>Charges</td>
-                          <td id="tax">£15</td>
+                          <td id="tax">₹ 15</td>
                       </tr>
                       <tr class="totalamt">
                           <td>Total</td>
-                          <td id="bill">£0</td>
+                          <td id="bill">₹1</td>
                       </tr>
                   </table>
               </div>
           </div>          
-          <script src="checkoutscript.js"></script>  
+            
+          <!-- <script>
+            
+
+          </script> -->
+          
         </div>
           <hr class="my-4" />
           <h4>Address of the seller</h4>
@@ -230,7 +236,6 @@
               type="radio"
               class="form-check-input"
               required
-              checked
             />
             <label for="COD">Cash on delivery</label>
           </div>
@@ -243,15 +248,19 @@
               required
               checked
             />
-            <label for="paypal">PayPal</label>
+            <label for="paypal">RazorPay</label>
           </div>
           <hr class="my-4">
 
-          <button class="btn btn-primary btn-lg" id="place-order-button">Place order</button>
+          <!-- <button class="btn btn-primary btn-lg" id="payment-button">Place order</button> -->
+          <button class="btn btn-primary btn-lg" id="payment-button">Place order</button>
           <button class="btn btn-secondary btn-lg mb-3">Cancel transaction</button>
+          <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+          <script src="checkoutscript.js"></script>
         </div>
       </form>
     </div>
+
         <!-- aaron's shitty code start -->
         <footer class="footer">
           <div class="navigation-foot">

@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get all the input elements and the subtotal element
     const inputElements = document.querySelectorAll('.quantity-input input');
     const subtotalElement = document.getElementById('subtotal');
-    const temp = parseFloat(document.getElementById('initialprice').textContent.replace('£', ''));
+    const temp = parseFloat(document.getElementById('initialprice').textContent.replace('₹ ', ''));
     const taxElement = document.getElementById('tax');
-    let charges = parseFloat(taxElement.textContent.replace('£', ''));
+    let charges = parseFloat(taxElement.textContent.replace('₹ ', ''));
 
     // Function to update the subtotal
     function updateSubtotal() {
@@ -65,18 +65,18 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the price element for this input
         const priceElement = inputElement.closest('tr').querySelector('td:nth-child(3)');
         const priceText = priceElement.textContent;
-        const price = parseFloat(priceText.replace('£', ''));
+        const price = parseFloat(priceText.replace('₹ ', ''));
 
         // Calculate the row subtotal based on the quantity and price
         const rowSubtotal = (temp * quantity).toFixed(2);
         subtotal += parseFloat(rowSubtotal);
 
         // Update the corresponding <td> with the new row subtotal
-        priceElement.textContent = `£${rowSubtotal}`;
+        priceElement.textContent = `₹ ${rowSubtotal}`;
       });
 
       // Update the subtotal element with the new subtotal
-      subtotalElement.textContent = `£${subtotal.toFixed(2)}`;
+      subtotalElement.textContent = `₹ ${subtotal.toFixed(2)}`;
 
       // Calculate the new tax based on the updated subtotal
       // if (subtotal > 200) {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ucharges = charges * subtotal
 
       // Update the tax element with the new tax
-      taxElement.textContent = `£${ucharges.toFixed(2)}`;
+      taxElement.textContent = `₹ ${ucharges.toFixed(2)}`;
 
       // Update the total
       updateTotal();
@@ -96,14 +96,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateTotal() {
       // Get the current subtotal
       const subtotalText = subtotalElement.textContent;
-      const subtotal = parseFloat(subtotalText.replace('£', ''));
+      const subtotal = parseFloat(subtotalText.replace('₹ ', ''));
 
       // Calculate the total by adding charges to the subtotal
       const total = (subtotal + ucharges).toFixed(2);
 
       // Update the 'bill' element with the new total
       const billElement = document.getElementById('bill');
-      billElement.textContent = `£${total}`;
+      billElement.textContent = `₹ ${total}`;
     }
 
     // Calculate the initial subtotal
@@ -114,47 +114,145 @@ document.addEventListener('DOMContentLoaded', function () {
       inputElement.addEventListener('input', updateSubtotal);
     });
   });
+  // document.getElementById('payment-button').addEventListener('click', function (event) {
+  //   // Prevent the default form submission behavior
+  //   alert('here i am');
+  //   event.preventDefault();
+  //   const totalAmountInPaise= parseInt(document.getElementById('bill').textContent) * 100
+  //   var data = {
+  //     key: 'rzp_test_7vCh5UQuRzt3AN', // Replace with your Razorpay API key
+  //     amount: totalAmountInPaise,
+  //     currency: 'INR',
+  //     name: 'Cart 2 Door',
+  //     description: 'Payment for your order',
+  //     image: '/Images/SHLocal_logo.png',
+  //     order_id: 'C2D_EIC0001', // Replace with the order ID from your server
+  //     handler: function (response) {
+  //       // This function will be called when the payment is successful.
+  //       // You can update your database or perform other actions here.
+  //       alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+  //     },
+  //   };
+  //   var rzp = new Razorpay(data);
+  //   rzp.open();
 
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const placeOrderButton = document.querySelector("#place-order-button");
+  // });
   
-    placeOrderButton.addEventListener("click", async () => {
-      const firstName = document.querySelector("#firstName").value;
-      const lastName = document.querySelector("#lastName").value;
-      const username = document.querySelector("#username").textContent;
-      const state = document.querySelector("#state").value;
-      const city = document.querySelector("#city").value;
-      const pincode = document.querySelector("#1234").value;
-      const total = parseFloat(document.querySelector("#bill").textContent.replace("£", ""));
+  // document.getElementById('payment-button').addEventListener('click', function (event) {
+  //   // Prevent the default form submission behavior
+  //   alert('button was pressed');
+  //   event.preventDefault();
+  //   var billAmountInPounds = document.getElementById('bill').textContent; // Get the amount in pounds, e.g., '₹ 1'
+  //   var billAmountInPaise = parseFloat(billAmountInPounds.replace('₹ ', '')) * 100; // Convert to paise
+  //   alert(billAmountInPaise);
+  //   const orderid = `${Date.now()}_YOUR_BUSINESS_ID_${Math.random().toString(36).substring(7)}`;
+
+  //   var razorpayOptions = {
+  //     key: 'rzp_test_7vCh5UQuRzt3AN', // Replace with your actual Razorpay key
+  //     amount: billAmountInPaise, // Correctly convert the amount to paise
+  //     currency: 'INR', // Replace with the currency code (e.g., INR for Indian Rupees)
+  //     name: 'Cart 2 Door',
+  //     description: 'Payment for your order',
+  //     image: '/Images/SHLocal_logo.png', // Replace with your company logo URL
+  //     order_id: orderid, // Replace with the order ID from your server
+  //     handler: function (response) {
+  //       // This function will be called when the payment is successful.
+  //       // You can update your database or perform other actions here.
+  //       alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+  //     },
+  //   };
   
-      // Send the checkout data to the server
-      const response = await fetch("/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          username,
-          state,
-          city,
-          pincode,
-          total,
-        }),
+  //   var rzp = new Razorpay(razorpayOptions);
+  //   rzp.open();
+  // });
+
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const placeOrderButton = document.querySelector("#place-order-button");
+  
+  //   placeOrderButton.addEventListener("click", async () => {
+  //     const firstName = document.querySelector("#firstName").value;
+  //     const lastName = document.querySelector("#lastName").value;
+  //     const username = document.querySelector("#username").textContent;
+  //     const state = document.querySelector("#state").value;
+  //     const city = document.querySelector("#city").value;
+  //     const pincode = document.querySelector("#1234").value;
+  //     const total = parseFloat(document.querySelector("#bill").textContent.replace("₹ ", ""));
+  
+  //     // Send the checkout data to the server
+  //   //   const response = await fetch("/checkout", {
+  //   //     method: "POST",
+  //   //     headers: {
+  //   //       "Content-Type": "application/json",
+  //   //     },
+  //   //     body: JSON.stringify({
+  //   //       firstName,
+  //   //       lastName,
+  //   //       username,
+  //   //       state,
+  //   //       city,
+  //   //       pincode,
+  //   //       total,
+  //   //     }),
+  //   //   });
+  
+  //   //   const data = await response.json();
+  
+  //   //   if (data.success) {
+  //   //     // Order placed successfully, you can redirect the user or show a success message
+  //   //     alert("Order placed successfully!");
+  //   //   } else {
+  //   //     // Order placement failed, handle the error
+  //   //     alert("Order placement failed. Please try again.");
+  //   //   }
+  //   });
+  // });
+  
+
+
+
+  document.getElementById("payment-button").addEventListener("click", function (event) {
+    event.preventDefault();
+    const billElement = document.getElementById("bill");
+    const billContent = billElement.textContent.trim(); 
+    const numericValue = parseFloat(billContent.replace(/[^0-9.]/g, '')); 
+    const totalAmountInPaise = Math.round(numericValue * 100);
+    // alert(totalAmountInPaise);
+    // Send a request to your server to create the order
+    fetch("/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        totalAmountInPaise: totalAmountInPaise,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          var razorpayOptions = {
+            key: "rzp_test_7vCh5UQuRzt3AN", // Replace with your Razorpay API key
+            amount: totalAmountInPaise,
+            currency: "INR",
+            name: "Cart 2 Door",
+            description: "Payment for your order",
+            image: "/Images/SHLocal_logo.png",
+            order_id: data.order_id, // Use the order ID from the server
+            handler: function (response) {
+              alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            },
+          };
+  
+          var rzp = new Razorpay(razorpayOptions);
+          rzp.open();
+        } else {
+          console.error(data.message);
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("An error occurred. Please try again.");
       });
-  
-      const data = await response.json();
-  
-      if (data.success) {
-        // Order placed successfully, you can redirect the user or show a success message
-        alert("Order placed successfully!");
-      } else {
-        // Order placement failed, handle the error
-        alert("Order placement failed. Please try again.");
-      }
-    });
   });
   
