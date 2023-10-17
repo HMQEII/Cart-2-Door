@@ -1,3 +1,16 @@
+function openPopup(message) {
+  const popup = document.getElementById("popup");
+  const popupMessage = document.getElementById("popup-message");
+  popupMessage.textContent = message;
+  popup.style.display = "block";
+}
+
+// Function to close the popup
+function closePopup() {
+  const popup = document.getElementById("popup");
+  popup.style.display = "none";
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     function retrieveDetailsFromLocalStorage() {
         // Retrieve the details from local storage
@@ -23,25 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     retrieveDetailsFromLocalStorage();
 });
 
-
-// JavaScript to handle increment and decrement functionality for each row
-// const decrementButtons = document.querySelectorAll('.decrement-button');
-// const incrementButtons = document.querySelectorAll('.increment-button');
-// const quantityInputs = document.querySelectorAll('.quantity-input input');
-
-// decrementButtons.forEach((decrementButton, index) => {
-//     decrementButton.addEventListener('click', () => {
-//         if (quantityInputs[index].value > 1) {
-//             quantityInputs[index].value = parseInt(quantityInputs[index].value) - 1;
-//         }
-//     });
-// });
-
-// incrementButtons.forEach((incrementButton, index) => {
-//     incrementButton.addEventListener('click', () => {
-//         quantityInputs[index].value = parseInt(quantityInputs[index].value) + 1;
-//     });
-// });
 
 
 //calculation code
@@ -116,50 +110,156 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
 
+document.addEventListener("DOMContentLoaded", function() {
+  // Your code here
 
   document.getElementById("payment-button").addEventListener("click", function (event) {
-    event.preventDefault();
-    const billElement = document.getElementById("bill");
-    const billContent = billElement.textContent.trim(); 
-    const numericValue = parseFloat(billContent.replace(/[^0-9.]/g, '')); 
-    const totalAmountInPaise = Math.round(numericValue * 100);
-    // alert(totalAmountInPaise);
-    // Send a request to your server to create the order
-    fetch("/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        totalAmountInPaise: totalAmountInPaise,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          var razorpayOptions = {
-            key: "rzp_test_7vCh5UQuRzt3AN", // Replace with your Razorpay API key
-            amount: totalAmountInPaise,
-            currency: "INR",
-            name: "Cart 2 Door",
-            description: "Payment for your order",
-            image: "/Images/SHLocal_logo.png",
-            order_id: data.order_id, // Use the order ID from the server
-            handler: function (response) {
-              alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-            },
+      // Prevent the default form submission
+      event.preventDefault();
+
+      // Check which payment method is selected
+      const codRadioButton = document.getElementById("COD");
+      const razorPayRadioButton = document.getElementById("paypal");
+      function sendEmail(email,subject,body)
+      {
+        Email.send({
+          Host : "smtp.elasticemail.com",
+          Username : "q4me.eic@gmail.com",
+          Password : "FB017ABBE9E59E85FF5774A6B52D41DF8393",
+          To : email,
+          From : "q4me.eic@gmail.com",
+          Subject : subject,
+          Body : body
+      }).then(
+        message => console.log(message)
+      );
+      }
+      async function getEmail(userid) {
+        return fetch(`/getEmail/${userid}`)
+            .then(response => {
+                if (response.status === 404) {
+                    throw new Error('User not found');
+                }
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.email) {
+                    return data.email;
+                } else {
+                    throw new Error('Email not found');
+                }
+            });
+    }
+    async function placeorder(){
+        const firstName = document.getElementById("firstName").value;
+          const lastName = document.getElementById("lastName").value;
+          const username = document.getElementById("useridforbiling").textContent;
+          const state = document.getElementById("state").value;
+          const city = document.getElementById("city").value;
+          const pincode = document.getElementById("pincode").value;
+          const total = parseFloat(document.getElementById("bill").textContent.replace("₹", ""));
+          
+          // Create a JavaScript object to hold the order data
+          const orderData = {
+              firstName,
+              lastName,
+              username,
+              state,
+              city,
+              pincode,
+              total,
           };
-  
-          var rzp = new Razorpay(razorpayOptions);
-          rzp.open();
-        } else {
-          console.error(data.message);
-          alert(data.message);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("An error occurred. Please try again.");
-      });
+
+          // Send a POST request to your server with the order data for Cash on Delivery
+          fetch("/checkout", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(orderData),
+          })
+          .then((response) => response.json())
+          .then(async (data) => {
+              if (data.success) {
+                  // Handle a successful order placement here (e.g., show a success message)
+                  openPopup("Order placed successfully!");
+                  // Send an email with data
+                  
+                  try{
+                  
+                  const emailid = await getEmail(username);
+                  // alert(emailid);
+                  sendEmail(emailid, 'Hello', 'Order placed successfully');
+                }
+                catch (error) {
+                  console.error("Error while displaying alert:", error);
+              }
+
+              } else {
+                  // Handle an unsuccessful order placement here (e.g., show an error message)
+                  openPopup("Order placement failed. Please try again.");
+              }
+          })
+          .catch((error) => {
+              // Handle any network or server error here
+              console.error("An error occurred: " + error.message);
+          });
+      }
+      if (codRadioButton.checked) {
+          // Cash on Delivery is selected
+          placeorder();
+      } else if (razorPayRadioButton.checked) {
+          // RazorPay is selected
+          const billElement = document.getElementById("bill");
+          const billContent = billElement.textContent.trim(); 
+          const numericValue = parseFloat(billContent.replace(/[^0-9.]/g, '')); 
+          const totalAmountInPaise = Math.round(numericValue * 100);
+          
+          // Send a request to your server to create the order for RazorPay
+          fetch("/create-order", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  totalAmountInPaise: totalAmountInPaise,
+              }),
+          })
+          .then((response) => response.json())
+          .then((data) => {
+              if (data.success) {
+                  var razorpayOptions = {
+                      key: "rzp_test_7vCh5UQuRzt3AN", // Replace with your Razorpay API key
+                      amount: totalAmountInPaise,
+                      currency: "INR",
+                      name: "Cart 2 Door",
+                      description: "Payment for your order",
+                      image: "/Images/SHLocal_logo.png",
+                      order_id: data.order_id, // Use the order ID from the server
+                      handler: function (response) {
+                          alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                          placeorder();
+                      },
+                  };
+
+                  var rzp = new Razorpay(razorpayOptions);
+                  rzp.open();
+              } else {
+                  console.error(data.message);
+                  alert(data.message);
+              }
+          })
+          .catch((error) => {
+              console.error(error);
+              alert("An error occurred. Please try again.");
+          });
+      }
   });
-  
+});
+
+
+
+

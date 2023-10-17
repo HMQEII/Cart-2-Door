@@ -41,6 +41,21 @@ const OrderSchema = new mongoose.Schema({
 const Order = mongoose.model("Order", OrderSchema);
 const User = mongoose.model("User", UserSchema);
 
+app.get('/getEmail/:username', async (req, res) => {
+  try {
+      const username = req.params.username;
+      const user = await User.findOne({ username });
+      if (user) {
+          res.json({ email: user.email });
+      } else {
+          res.status(404).json({ error: 'User not found' });
+      }
+  } catch (error) {
+      res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 //checking process for registration boxe
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -144,10 +159,7 @@ app.post("/checkout", async (req, res) => {
   });
 
 
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//     console.log(`Node.js is currently active and listening on port ${port}`);
-// });
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Node.js is currently active and listening on port ${port}`);
@@ -158,7 +170,7 @@ app.listen(port, () => {
 });
 
 
-
+//calling razorpay
 const razorpay = new Razorpay({
   key_id: "rzp_test_7vCh5UQuRzt3AN", // Replace with your Razorpay API key
   key_secret: "sYWpjcbVpXcA3fuplJNO99cc", // Replace with your Razorpay API secret
@@ -190,44 +202,5 @@ app.post("/create-order", async (req, res) => {
 });
 
 
-
-
-//razorpay request
-// const razorpay = new Razorpay({
-//   key_id: 'rzp_test_7vCh5UQuRzt3AN',
-//   key_secret: 'sYWpjcbVpXcA3fuplJNO99cc',
-// });
-
-// app.post('/create-order', async (req, res) => {
-//   const { totalAmountInPaise } = req.body; // You should send the total amount from the client.
-
-//   const options = {
-//     amount: totalAmountInPaise, // Amount in paise
-//     currency: 'INR', // Currency code (e.g., INR)
-//   };
-
-//   try {
-//     const order = await razorpay.orders.create(options);
-
-//     // Return the order details to the client
-//     res.json(order);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ success: false, message: 'Order creation failed. Please try again.' });
-//   }
-// });
-
-
-// var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
-
-// instance.orders.create({
-//   amount: 50000,
-//   currency: "INR",
-//   receipt: "receipt#1",
-//   notes: {
-//     key1: "value3",
-//     key2: "value2"
-//   }
-// })
 
 

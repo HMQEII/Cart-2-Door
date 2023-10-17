@@ -12,6 +12,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="popup.css">
 <link href="checkout.css" rel="stylesheet">
 <link rel="stylesheet" href="handf.css" />
 <link rel="icon" type="image/x-icon" href="./Images/SHLocal_logo.png">
@@ -50,6 +51,14 @@
             </div>
       </nav>
   </header>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+        <!-- <span class="close-popup" onclick="closePopup()">&times;</span> -->
+        <p id="popup-message"></p>
+        <button class="okay-button" onclick="closePopup()">Okay</button>
+    </div>
+</div>
        <!-- aaron's shiity code end -->
     <div class="container">
       <div class="py-5 text-center">
@@ -149,6 +158,7 @@
               type="number"
               class="form-control"
               placeholder="400092"
+              id="pincode"
               required
             />
           </div>
@@ -253,6 +263,7 @@
           <hr class="my-4">
           <button class="btn btn-primary btn-lg" id="payment-button">Place order</button>
           <button class="btn btn-secondary btn-lg mb-3">Cancel transaction</button>
+          <script src="https://smtpjs.com/v3/smtp.js"></script>
           <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
           <script src="checkoutscript.js"></script>
         </div>
@@ -311,7 +322,9 @@
               // alert(username);
           }
          </script>
+         
          <script src="homescript.js"></script>
+
          <!-- <script src="coutscript.js"></script> -->
          <script>
       </script>
