@@ -6,19 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cart 2 Door</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="popup.css">
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="HomeStyle.css"> 
         <link rel="icon" type="image/x-icon" href="/images/SHLocal_logo.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
     </head>
     <body>
-        <!-- <div class="loading-screen">
-            <div class="loading-content">
-                <img src="/images/loader.gif" width="75%" >
-                <p style="font-size: 30px;">Loading...</p>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <!-- <span class="close-popup" onclick="closePopup()">&times;</span> -->
+                <p id="popup-message"></p>
+                <button class="okay-button" onclick="closePopup()">Okay</button>
             </div>
-        </div> -->
+        </div>
         <style>
             .ionicons{
                 font-size: 28px;
@@ -165,13 +166,25 @@
                     </div>
                     <hr class="second-hr">
                     <button class="ml-auto"onclick="redirectToCheckout()">PROCEED TO CHECKOUT</button>
-                    <button class="ml-auto">ADD TO CART</button>
+                    <button class="ml-auto" onclick="addtocart()">ADD TO CART</button>
                     <button class="ml-auto" onclick="clearSelectedThings()">CLEAR</button>
                     <br>
                     </div>
                 </div> 
             </center>
             <script>
+                function openPopup(message) {
+                    const popup = document.getElementById("popup");
+                    const popupMessage = document.getElementById("popup-message");
+                    popupMessage.textContent = message;
+                    popup.style.display = "block";
+                }
+                
+                // Function to close the popup
+                function closePopup() {
+                    const popup = document.getElementById("popup");
+                    popup.style.display = "none";
+                }
                 // Function to get the selected shop and items and redirect to checkout.html
                 function redirectToCheckout() {
                     // Get the latest value of selecshop and selecitem
@@ -186,6 +199,45 @@
 
                     // Redirect to checkout.html
                     window.location.href = 'checkout.html';
+                }
+                function addtocart() {
+                    const userid = localStorage.getItem("username");
+                    const shopName = document.getElementById('selecshop').textContent;
+                    const itemName = document.getElementById('selecitem').textContent;
+                    const Image = selectedImage;
+                    const price = itemPrice;
+                    alert(userid);
+                    // alert(price);
+                    // Store the details in local storage
+                    // localStorage.setItem('localVariableDetails', JSON.stringify({ shopName, itemName, Image, price }));
+                    const itemToAdd = {
+                        userid,
+                        shopName,
+                        itemName,
+                        Image,
+                        price,
+                    };
+
+                    // Send a POST request to the server to add the item to the cart
+                    fetch('/addtocart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(itemToAdd),
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            openPopup("Item added to the cart.");
+                        } else {
+                            openPopup("Failed to add item to the cart.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        openPopup("Failed to add item to the cart.");
+                    });
                 }
             </script>
             <style>

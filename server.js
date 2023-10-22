@@ -37,7 +37,15 @@ const OrderSchema = new mongoose.Schema({
   orderCompleted: String,
   timestamp: { type: Date, default: Date.now },
   });
+const CartItemSchema = new mongoose.Schema({
+    userid: String,
+    shopName: String,
+    itemName: String,
+    Image: String,
+    price: Number,
+});
 
+const CartItem = mongoose.model("CartItem", CartItemSchema);
 const Order = mongoose.model("Order", OrderSchema);
 const User = mongoose.model("User", UserSchema);
 
@@ -203,4 +211,62 @@ app.post("/create-order", async (req, res) => {
 
 
 
+app.post("/addtocart", async (req, res) => {
+  const { userid, shopName, itemName, Image, price } = req.body;
 
+  try {
+      const cartItem = new CartItem({
+          userid,
+          shopName,
+          itemName,
+          Image,
+          price,
+      });
+
+      await cartItem.save();
+
+      res.json({ success: true, message: "Item added to the cart." });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Failed to add item to the cart." });
+  }
+});
+
+app.get("/getCartItems", async (req, res) => {
+  const userid = req.params.userid;
+  // console.log("UserID from route parameter: " + userid);
+  try {
+    const userid = req.params.userid;
+    // console.log(userid);
+    const query = CartItem.find({ userId: userid });
+  console.log("MongoDB Query: " + JSON.stringify(query.getQuery()));
+
+  const cartItems = await query.exec();
+  console.log("Fetched cart items:", cartItems);
+
+    // Send the cart items as JSON
+    res.json(cartItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to retrieve cart items." });
+  }
+});
+
+
+app.delete("/deleteCartItem/:itemId", async (req, res) => {
+  const itemId = req.params.itemId;
+
+  try {
+    // Delete the item from the database based on the itemId
+    const result = await CartItem.deleteOne({ _id: itemId });
+
+    if (result.deletedCount === 1) {
+      res.json({ success: true, message: "Item deleted successfully." });
+    } else {
+      res.json({ success: false, message: "Item not found or could not be deleted." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to delete the item." });
+  }
+});

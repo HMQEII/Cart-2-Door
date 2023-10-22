@@ -1,5 +1,16 @@
-
-function showIframe(cardName, cardText) {
+function openPopup(message) {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popup-message");
+    popupMessage.textContent = message;
+    popup.style.display = "block";
+  }
+  
+  // Function to close the popup
+  function closePopup() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "none";
+  }
+  function showIframe(cardName, cardText) {
     // Hide all iframes
     const iframes = document.querySelectorAll('.hidden-iframe');
     iframes.forEach(iframe => {
@@ -161,3 +172,10 @@ function handleMessageforscroll(event) {
     }
 }
 window.addEventListener('message', handleMessageforscroll);
+
+
+// Assuming you have the item details in variables
+
+
+
+
