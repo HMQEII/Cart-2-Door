@@ -10,31 +10,49 @@ function closePopup() {
   const popup = document.getElementById("popup");
   popup.style.display = "none";
 }
+// document.addEventListener("DOMContentLoaded", () => {
+//     // Get the subtotal query parameter from the URL
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const subtotalValue = urlParams.get("subtotal");
+  
+//     // Set the subtotal in the 'subtotal' element
+//     document.getElementById("initialprice").textContent = subtotalValue;
+//   });
+  
 
 document.addEventListener('DOMContentLoaded', function() {
-    function retrieveDetailsFromLocalStorage() {
-        // Retrieve the details from local storage
-        const localVariableDetails = JSON.parse(localStorage.getItem('localVariableDetails'));
+    const urlParams = new URLSearchParams(window.location.search);
+    const subtotalValue = urlParams.get("subtotal");
+    const formattedValue = subtotalValue.replace("₹", "");
+    if (subtotalValue) {
+        // The page was called from the cart page, so set the initial price
+        document.getElementById("initialprice").textContent = `${formattedValue}`;
 
-        if (localVariableDetails) {
-            // Set the details in the checkout page
-            document.getElementById('shopname').textContent = localVariableDetails.shopName;
-            document.getElementById('itemname').textContent = localVariableDetails.itemName;
-            const imgElement = document.createElement('img');
-            imgElement.src = localVariableDetails.Image;
-            const itemprice = localVariableDetails.price;
-            // alert(itemprice);
-            // alert(JSON.stringify(localVariableDetails.Image));
-            document.getElementById('selectedImage').src = localVariableDetails.Image;
-            document.getElementById('initialprice').textContent = localVariableDetails.price;
-            // alert(localVariableDetails.shopName);
-            // alert(localVariableDetails.itemName);
+        // const imgElement = document.createElement('img');
+        document.getElementById('selectedImage').src = "https://drive.google.com/uc?id=1CRV8uQuAv9A1X-xfNziYDpkxh5tTsFgG";
+        // const imageContainer = document.getElementById("selectedImage");
+        // console.log(imageContainer);
+        // imageContainer.appendChild(imgElement);
+    } else {
+        // Handle the case when the page was not called from the cart page
+        function retrieveDetailsFromLocalStorage() {
+            // Retrieve the details from local storage
+            const localVariableDetails = JSON.parse(localStorage.getItem('localVariableDetails'));
+
+            if (localVariableDetails) {
+                // Set the details in the checkout page
+                document.getElementById('shopname').textContent = localVariableDetails.shopName;
+                document.getElementById('itemname').textContent = localVariableDetails.itemName;
+                document.getElementById('selectedImage').src = localVariableDetails.Image;
+                document.getElementById('initialprice').textContent = `${localVariableDetails.price}`;
+            }
         }
-    }
 
-    // Call the function to retrieve and display details
-    retrieveDetailsFromLocalStorage();
+        // Call the function to retrieve and display details
+        retrieveDetailsFromLocalStorage();
+    }
 });
+
 
 
 
@@ -260,6 +278,13 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
+// document.addEventListener("DOMContentLoaded", () => {
+//     // Get the subtotal query parameter from the URL
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const subtotalValue = urlParams.get("subtotal");
+  
+//     // Set the subtotal in the 'subtotal' element
+//     document.getElementById("initialprice").textContent = subtotalValue;
+//   });
 
 

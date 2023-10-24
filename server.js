@@ -43,6 +43,9 @@ const CartItemSchema = new mongoose.Schema({
     itemName: String,
     Image: String,
     price: Number,
+    quantity: Number,
+    units: String,
+    shopaddress: String,
 });
 
 const CartItem = mongoose.model("CartItem", CartItemSchema);
@@ -212,7 +215,7 @@ app.post("/create-order", async (req, res) => {
 
 
 app.post("/addtocart", async (req, res) => {
-  const { userid, shopName, itemName, Image, price } = req.body;
+  const { userid, shopName, itemName, Image, price, quantity, units, shopaddress, } = req.body;
 
   try {
       const cartItem = new CartItem({
@@ -221,6 +224,9 @@ app.post("/addtocart", async (req, res) => {
           itemName,
           Image,
           price,
+          quantity,
+          units,
+          shopaddress,
       });
 
       await cartItem.save();

@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <td><img src="${item.Image}" alt="" /></td>
           <td>${item.shopName}</td>
           <td>${item.itemName}</td>
-          <td>£${item.price}</td>
+          <td>₹${item.price}</td>
           <td><input class="w-25 pl-1" value="1" min="1" type="number" /></td>
           <td>₹${item.price}</td>
         `;
-
+      //  ${item.Image}
         // Add a click event listener to the trash icon
         const trashIcon = row.querySelector(".trash-icon");
         trashIcon.addEventListener("click", (event) => {
@@ -127,4 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
       
     })
     .catch((error) => console.error(error));
+
+    const proceedToCheckoutButton = document.getElementById("proceedToCheckout");
+
+    proceedToCheckoutButton.addEventListener("click", () => {
+    // Get the subtotal value from the element with id 'subtotal'
+    const subtotalValue = document.getElementById("subtotal").textContent;
+    // const subtotalValue = "20.00";  // Replace with the actual subtotal value
+    const checkoutURL = `checkout.html?subtotal=${subtotalValue}`;
+     window.location.href = checkoutURL;
+  });
 });

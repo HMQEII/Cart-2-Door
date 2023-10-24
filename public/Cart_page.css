@@ -94,14 +94,37 @@
   height: 44px;
   margin: 0 0 20px 12px;
 }
-
-#cart-bottom .coupon button,
-#cart-bottom .total div>button{
-  background-color: #f9c19d;
+.additems{
+  margin: 10px;
+  background-color: rgb(241, 77, 77) !important;
   color: #fff;
   font-weight: 700;
   border:none;
   padding: 10px;
+  transition: .3s;
+  
+}
+.additems a{
+  text-decoration: none;
+  color: #fff;
+}
+.additems:hover{
+  transform: scale(1.05);
+  transition: .3s;
+}
+#cart-bottom .coupon button,
+#cart-bottom .total div>button{
+  background-color: rgb(241, 77, 77);
+  color: #fff;
+  font-weight: 700;
+  border:none;
+  padding: 10px;
+  transition: .3s;
+}
+#cart-bottom .coupon button:hover,
+#cart-bottom .total div>button:hover {
+  transform: scale(1.05);
+  transition: .3s;
 }
 
 #cart-bottom .total div>div{
